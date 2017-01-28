@@ -1,0 +1,33 @@
+{
+  "name": "angularjs-webpack",
+  "version": "1.0.0",
+  "description": "A minimalistic AngularJS and Webpack starter.",
+  "main": "main.js",
+  "scripts": {
+    "serve": "node_modules/.bin/http-server ./dist -p 3000",
+    "build": "node_modules/.bin/webpack",
+    "start": "npm run build && npm run serve"
+  },
+  "keywords": [
+    "anguar",
+    "angularjs",
+    "webpack",
+    "starter",
+    "boilerplate"
+  ],
+  "author": "Robert J Stires <rjstires@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.11",
+    "jquery": "^2.2.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.14.1",
+    "eslint-config-google": "^0.7.1",
+    "http-server": "^0.9.0",
+    "webpack": "^1.14.0"
+  }
+}
