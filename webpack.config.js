@@ -16,7 +16,7 @@ const config = {
       {
         test: /\.js$/,
         loader: 'ng-annotate!babel-loader',
-        include: './client/src',
+        exclude: /node_modules/,
       },
       {
           test: /\.less$/,

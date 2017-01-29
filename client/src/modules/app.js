@@ -6,3 +6,5 @@ const home = require('./home');
 
 module.exports = angular
     .module('myApplication', [ngRoute, home]);
+
+console.log("Up and running with AngularJS v" + angular.version.full);

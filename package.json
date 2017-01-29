@@ -18,18 +18,20 @@
   "author": "Robert J Stires <rjstires@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.5.11",
-    "angular-route": "^1.5.11",
+    "angular": "1.2.32",
+    "angular-route": "1.2.32",
     "jquery": "^2.2.4"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es3": "^1.0.1",
     "css-loader": "^0.26.1",
     "eslint": "^3.14.1",
     "eslint-config-google": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.26.0",
     "http-server": "^0.9.0",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
