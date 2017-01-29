@@ -1,6 +1,8 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const pkg = require('./package.json');
+const indexOptions = require('./index-options');
 const config = {
   entry: {
     app: './client/src/main.js',
@@ -23,6 +25,9 @@ const config = {
   resolve: {
     extensions: ['', '.js'],
   },
+  plugins: [
+    new HtmlWebpackPlugin(indexOptions),
+  ],
 };
 
 module.exports = config;
