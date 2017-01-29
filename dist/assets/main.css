@@ -1,0 +1,12 @@
+.alpha {
+  color: red;
+}
+.alpha.bravo {
+  color: green;
+}
+.home {
+  width: 100%;
+}
+.home aside {
+  color: aliceblue;
+}

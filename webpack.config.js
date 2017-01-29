@@ -1,12 +1,10 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const pkg = require('./package.json');
-const indexOptions = require('./index-options');
+
 const config = {
   entry: {
     app: './client/src/main.js',
-    vendor: Object.keys(pkg.dependencies),
   },
   output: {
     path: path.join(__dirname, '/dist/assets'),
@@ -17,16 +15,32 @@ const config = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'ng-annotate!babel-loader',
         include: './client/src',
       },
+      {
+          test: /\.less$/,
+          loader: ExtractTextPlugin.extract(
+              'style-loader',
+              'css-loader!less-loader'),
+      },
+      {
+          test: /\.html$/,
+          loader: 'raw-loader',
+        },
     ],
   },
   resolve: {
     extensions: ['', '.js'],
   },
+
   plugins: [
-    new HtmlWebpackPlugin(indexOptions),
+    new HtmlWebpackPlugin({
+        inject: 'body',
+        template: 'client/src/index.template.html',
+        filename: '../index.html',
+    }),
+    new ExtractTextPlugin('main.css'),
   ],
 };
 

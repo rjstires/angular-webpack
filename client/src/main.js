@@ -1,3 +1,3 @@
-const app = angular.module('myApplication', []);
+require('./main.less');
 
-export default app;
+const app = require('./modules/app');
