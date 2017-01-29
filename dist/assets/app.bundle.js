@@ -65,17 +65,11 @@
 	const angular = __webpack_require__(6);
 	const ngRoute = __webpack_require__(8);
 
-	const routing = ($routeProvider) => {
-	    $routeProvider
-	    .when('/', {
-	        controller: __webpack_require__(10),
-	        controllerAs: 'vm',
-	        template: __webpack_require__(13),
-	    })
-	        .otherwise('/');
-	};
+	// Features
+	const home = __webpack_require__(10);
 
-	angular.module('myApplication', [ngRoute]).config(routing);
+	module.exports = angular
+	    .module('myApplication', [ngRoute, home]);
 
 
 /***/ },
@@ -33801,24 +33795,84 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(11);
-	module.exports = homeController = function($scope) {
-	    console.log('homeController initialized.');
-	};
+	const angular = __webpack_require__(6);
+	const ngRoute = __webpack_require__(8);
+
+	const routing = __webpack_require__(11);
+	const homeController = __webpack_require__(13);
+	const dataService = __webpack_require__(14);
+
+	__webpack_require__(15);
+
+	module.exports = angular
+	    .module('myApplication.home', [ngRoute, dataService])
+	    .config(routing)
+	    .controller('homeController', homeController)
+	    .name;
 
 
 /***/ },
 /* 11 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	const routing = ($routeProvider) => {
+	    $routeProvider
+	    .when('/', {
+	        controller: 'homeController',
+	        controllerAs: 'vm',
+	        template: __webpack_require__(12),
+	    })
+	        .otherwise('/');
+	};
+
+	module.exports = routing;
+
 
 /***/ },
-/* 12 */,
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = "<h1>Home Page</h1>\n"
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	
+	module.exports = homeController = function($scope, dataService) {
+	    console.log('homeController initialized.');
+	    console.log(dataService.getData());
+	};
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const angular = __webpack_require__(6);
+
+	class dataService {
+	    constructor() {
+	    }
+
+	    getData() {
+	        return {
+	            data: [1, 2, 3, 4, 5],
+	        };
+	    }
+	}
+
+	module.exports = angular
+	    .module('services.dataService', [])
+	    .service('dataService', dataService)
+	    .name;
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
